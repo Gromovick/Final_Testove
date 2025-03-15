@@ -1,0 +1,35 @@
+body {
+  font-family: var(--font-family-base);
+  font-weight: "YOUR FONT WEIGHT HERE"; // YOUR FONT WEIGHT HERE
+  font-size: "YOUR FONT SIZE HERE"; // YOUR FONT SIZE HERE
+  line-height: "YOUR LINE HEIGHT HERE"; // YOUR LINE HEIGHT HERE
+  color: "YOUR TEXT COLOR HERE"; // YOUR TEXT COLOR HERE
+  background-color: "YOUR BACKGROUND COLOR HERE"; // YOUR BACKGROUND COLOR HERE
+}
+
+a,
+button,
+textarea,
+input,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+h1 {
+}
+h2 {
+}
+h3 {
+}
+h4 {
+}
+h5 {
+}
+h6 {
+}
+.button-text {
+}
