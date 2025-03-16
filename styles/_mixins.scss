@@ -1,5 +1,5 @@
-$viewMax: 1920; // YOUR VIEW MAX WIDTH HERE
-$viewMin: 320; // YOUR VIEW MIN WIDTH HERE
+$viewMax: 1440; // YOUR VIEW MAX WIDTH HERE
+$viewMin: 376; // YOUR VIEW MIN WIDTH HERE
 
 @mixin fluid-text($max, $min) {
   $s: ($max - $min) / ($viewMax - $viewMin);

@@ -1,7 +1,22 @@
 :root {
-  --font-family-base: "YOUR FONT FAMILY HERE"; // YOUR FONT FAMILY HERE
+  --font-family-base: "Inter", sans-serif; // YOUR FONT FAMILY HERE
 
-  --container-width: "YOUR CONTAINER WIDTH HERE"; // YOUR CONTAINER WIDTH HERE
-  --container-padding-x: "YOUR CONTAINER PADDING X HERE"; // YOUR CONTAINER PADDING X HERE
-  // --section-padding-y: 100px; // YOUR SECTION PADDING Y HERE
+  --primery: #b982ff;
+  --accented: #ffcf0f;
+  --gradient: linear-gradient(45deg, #18c8ff 0%, #933ffe 100%);
+
+  --bg: #0b0b0f;
+  --gray-100: #212529;
+  --gray-80: #495057;
+  --gray-60: #6e7584;
+  --gray-50: #adb5bd;
+  --gray-40: #ced4da;
+  --gray-30: #e9ecef;
+  --gray-20: #f1f3f5;
+  --gray-10: #f8f9fa;
+  --gray-0: #ffffff;
+
+  --container-width: 1180px; // YOUR CONTAINER WIDTH HERE
+  --container-padding-x: 20px; // YOUR CONTAINER PADDING X HERE
+  --section-padding-y: 100px; // YOUR SECTION PADDING Y HERE
 }

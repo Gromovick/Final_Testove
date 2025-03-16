@@ -1,0 +1,220 @@
+.modules {
+  &__inner {
+  }
+
+  &__text {
+    text-align: center;
+    max-width: 500px;
+    margin-inline: auto;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+  &__subtitle {
+    margin-bottom: 4px;
+  }
+  &__body-text {
+  }
+
+  &__content {
+    & .container {
+      @include mobile {
+        padding: 0;
+      }
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    @include mobile {
+      gap: 20px;
+    }
+  }
+
+  &__card {
+    --open: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    gap: 30px;
+
+    border-radius: 16px;
+    overflow: hidden;
+
+    &--active {
+      .modules__card-text-wrapper {
+        grid-template-rows: 1fr;
+      }
+      .modules__card-arrow {
+        transform: rotate(180deg);
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      border-radius: inherit;
+      backdrop-filter: blur(100px);
+      background: linear-gradient(
+          143.22deg,
+          rgba(223, 29, 255, 0.2) 17.688%,
+          rgba(155, 20, 177, 0.17) 27.411%,
+          rgba(124, 16, 141, 0.16) 31.94%,
+          rgba(69, 9, 79, 0.13) 39.73%,
+          rgba(0, 0, 0, 0.1) 49.661%,
+          rgba(9, 24, 30, 0.09) 56.721%,
+          rgba(21, 60, 74, 0.07) 66.923%,
+          rgba(72, 205, 255, 0) 92.742%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(41, 46, 75, 0.38),
+          rgba(48, 58, 120, 0.5) 100%
+        );
+    }
+
+    @include mobile {
+      --open: 1;
+      border-radius: 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 228px;
+      height: 100%;
+      backdrop-filter: blur(5px);
+      background: radial-gradient(
+        79.76% 109.18% at 50% -16%,
+        rgba(255, 255, 255, 0.36),
+        rgba(255, 255, 255, 0) 100%
+      );
+      z-index: 1;
+      border-top-left-radius: 50%;
+      border-bottom-left-radius: 50%;
+
+      @include tablet {
+        width: 160px;
+      }
+      @include mobile {
+        width: 172px;
+        right: -80px;
+      }
+    }
+
+    &-content {
+      padding: 28px 0;
+      margin-left: 100px;
+      max-width: 514px;
+      padding-right: 12px;
+      position: relative;
+      z-index: 2;
+      @include tablet {
+        padding: 25px 0;
+        padding-right: 0px;
+        margin-left: 30px;
+      }
+    }
+
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    &-icon-wrapper {
+      @include reset-button;
+    }
+    &-arrow {
+      margin-top: 12px;
+      width: 32px;
+      height: auto;
+      transition: transform 0.3s ease-in-out;
+      & path {
+        fill: var(--gray-0);
+      }
+    }
+
+    &-drop-down {
+    }
+    &-title {
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      @include mobile {
+        font-size: 24px;
+      }
+    }
+
+    &-hide-text {
+      overflow: hidden;
+    }
+
+    &-text-wrapper {
+      display: grid;
+      grid-template-rows: 1fr;
+      overflow: hidden;
+      transition: grid-template-rows 0.3s ease-in-out;
+      @include mobile {
+        grid-template-rows: 0fr;
+      }
+    }
+    &-text {
+      margin-bottom: 12px;
+      overflow: hidden;
+      @include mobile {
+        font-size: 14px;
+      }
+    }
+    &-subtitle {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      @include mobile {
+        font-size: 14px;
+      }
+    }
+    &-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    &-btn {
+      flex-shrink: 0;
+      align-items: center;
+      @include mobile {
+        font-size: 12px;
+      }
+    }
+    &-image {
+      width: 130px;
+      margin-right: 45px;
+      align-self: center;
+      position: relative;
+      z-index: 2;
+      @include tablet {
+        width: 92px;
+        margin-right: 26px;
+      }
+      @include mobile {
+        width: 62px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
