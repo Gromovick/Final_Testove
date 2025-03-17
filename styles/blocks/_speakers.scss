@@ -1,4 +1,88 @@
 .speakers {
+  overflow-x: hidden;
+
+  &__parts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    // z-index: -1;
+    top: 0;
+    left: 0;
+  }
+
+  &__star1 {
+    position: absolute;
+    width: 52px;
+    top: 10px;
+    left: 25px;
+    // z-index: -1;
+  }
+  &__star2 {
+    position: absolute;
+    width: 61px;
+    top: 44px;
+    right: 39px;
+  }
+
+  &__coin {
+    position: absolute;
+    &--silver {
+      transform: rotateZ(10deg);
+      width: 68px;
+      top: 323px;
+      left: 407px;
+    }
+    &--golden {
+      width: 104px;
+      top: 393px;
+      right: 217px;
+      transform: rotateZ(-47deg);
+      filter: drop-shadow(0px 4px 4px 0px #00000035);
+    }
+  }
+
+  &__glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 275px;
+      height: 464px;
+      top: -115px;
+      left: -120px;
+      transform: translate(0%, -50%);
+      background: linear-gradient(180deg, #184aff00, #174aff);
+      filter: blur(200px);
+      z-index: -1;
+      opacity: 0.8;
+      @include mobile {
+        left: -230px;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 574px;
+      height: 681px;
+      background: linear-gradient(180deg, #00c3ff00, #ff29c3);
+      filter: blur(350px);
+      top: -655px;
+      left: -315px;
+      opacity: 0.8;
+      @include mobile {
+        width: 413px;
+        height: 413px;
+        top: -350px;
+        left: -240px;
+      }
+    }
+  }
+
   &__inner {
     display: flex;
     justify-content: space-between;
@@ -45,22 +129,33 @@
       }
     }
   }
+
+  &__gap {
+    width: 1px;
+    align-self: stretch;
+    background: #b5b5b5;
+    opacity: 0.15;
+  }
+
   &__people {
     display: flex;
     flex-direction: column;
     gap: 22px;
     flex-shrink: 0;
+    position: relative;
+    z-index: 1;
     @include tablet {
       width: 100%;
     }
   }
   &__person {
     --arrow-width: 25px;
-
     position: relative;
+    z-index: 2;
     @include tablet {
       border-radius: 25px;
       padding: 25px;
+      background: var(--bg);
     }
 
     &-top {
@@ -71,12 +166,15 @@
 
     &-text {
       flex-grow: 1;
+      z-index: 2;
+      position: relative;
     }
 
     &-arrow {
       width: var(--arrow-width);
       height: auto;
       display: block;
+      transition: transform 0.3s ease-in-out;
       & path {
         fill: var(--gray-0);
       }
@@ -97,22 +195,20 @@
       }
     }
 
-    &::after {
-      content: "";
+    &-bg {
       display: none;
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      backdrop-filter: blur(104.8px);
       background: radial-gradient(
-          109.04% 120.55% at 87% 110.00000000000001%,
+          192.85% 120.55% at 87% 110.00000000000001%,
           rgba(223, 29, 255, 0.4),
           rgba(72, 205, 255, 0) 100%
         ),
         radial-gradient(
-          52.35% 79.4% at -5% -17%,
+          95.6% 79.4% at -5% -17%,
           rgba(61, 165, 245, 0.5),
           rgba(62, 238, 227, 0.1) 58.6%,
           rgba(62, 69, 238, 0) 94.1%
@@ -123,11 +219,51 @@
           rgba(41, 46, 75, 0.18) 100%,
           rgba(48, 58, 120, 0.5) 100%
         );
+      border-radius: 24.5px;
+      z-index: 1;
+      @include tablet {
+        display: block;
+      }
+    }
+
+    &::after,
+    &::before {
+      content: "";
+      display: none;
+      position: absolute;
       z-index: -1;
       border-radius: inherit;
       @include tablet {
         display: block;
       }
+    }
+
+    &::after {
+      inset: 0px;
+
+      background: var(--bg);
+    }
+
+    &::before {
+      inset: -2px;
+      backdrop-filter: blur(104.8px);
+      background: radial-gradient(
+          192.85% 120.55% at 87% 110%,
+          rgba(255, 0, 255, 0.7),
+          /* Increased saturation and opacity */ rgba(72, 205, 255, 0.2) 100%
+        ),
+        radial-gradient(
+          95.6% 79.4% at -5% -17%,
+          rgba(0, 132, 255, 0.7),
+          /* Brighter blue */ rgba(0, 255, 212, 0.3) 58.6%,
+          rgba(62, 69, 238, 0.2) 94.1%
+        ),
+        linear-gradient(
+          135deg,
+          rgba(60, 70, 130, 0.5) 0%,
+          /* More vibrant tones */ rgba(60, 70, 130, 0.3) 100%,
+          rgba(70, 80, 180, 0.6) 100%
+        );
     }
 
     &-info {
@@ -157,6 +293,9 @@
         }
         & ~ .speakers__person-content {
           grid-template-rows: 1fr;
+        }
+        .speakers__person-arrow {
+          transform: rotateZ(180deg);
         }
       }
     }
@@ -203,10 +342,12 @@
       font-size: 24px;
       font-weight: 600;
       line-height: 1.3;
-      text-align: left
+      text-align: left;
     }
   }
   &__content {
+    position: relative;
+    z-index: 1;
     @include flex-center;
     &-item {
       max-width: 506px;
