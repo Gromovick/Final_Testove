@@ -14,7 +14,7 @@
     width: 50%;
     z-index: -1;
     opacity: 50%;
-    @include tablet{
+    @include tablet {
       width: 80%;
     }
   }
@@ -33,7 +33,7 @@
       width: 286px;
       height: 406px;
       filter: blur(100px);
-      @include tablet{
+      @include tablet {
         transform: rotateZ(180deg);
         width: 350px;
         top: -175px;
@@ -50,7 +50,7 @@
       height: 470px;
       filter: blur(200px);
       border-radius: 50%;
-      @include tablet{
+      @include tablet {
         display: none;
       }
     }
@@ -91,15 +91,31 @@
 
   &__card {
     --open: 0;
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
     gap: 30px;
 
     border-radius: 16px;
-    overflow: hidden;
-
+    // overflow: hidden;
+    // backdrop-filter: blur(100px);
+    background-image: linear-gradient(
+        143.22deg,
+        rgba(223, 29, 255, 0.2) 17.688%,
+        rgba(155, 20, 177, 0.17) 27.411%,
+        rgba(124, 16, 141, 0.16) 31.94%,
+        rgba(69, 9, 79, 0.13) 39.73%,
+        rgba(0, 0, 0, 0.1) 49.661%,
+        rgba(9, 24, 30, 0.09) 56.721%,
+        rgba(21, 60, 74, 0.07) 66.923%,
+        rgba(72, 205, 255, 0) 92.742%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(41, 46, 75, 0.38),
+        rgba(48, 58, 120, 0.5) 100%
+      );
     &--active {
       .modules__card-text-wrapper {
         grid-template-rows: 1fr;
@@ -109,63 +125,27 @@
       }
     }
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      border-radius: inherit;
-      backdrop-filter: blur(100px);
-      background: linear-gradient(
-          143.22deg,
-          rgba(223, 29, 255, 0.2) 17.688%,
-          rgba(155, 20, 177, 0.17) 27.411%,
-          rgba(124, 16, 141, 0.16) 31.94%,
-          rgba(69, 9, 79, 0.13) 39.73%,
-          rgba(0, 0, 0, 0.1) 49.661%,
-          rgba(9, 24, 30, 0.09) 56.721%,
-          rgba(21, 60, 74, 0.07) 66.923%,
-          rgba(72, 205, 255, 0) 92.742%
-        ),
-        linear-gradient(
-          180deg,
-          rgba(41, 46, 75, 0.38),
-          rgba(48, 58, 120, 0.5) 100%
-        );
-    }
-
     @include mobile {
       --open: 1;
       border-radius: 0;
     }
 
-    &::after {
+    &::after,
+    &::before {
       content: "";
+      inset: -1px;
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 228px;
-      height: 100%;
-      backdrop-filter: blur(5px);
-      background: radial-gradient(
-        79.76% 109.18% at 50% -16%,
-        rgba(255, 255, 255, 0.36),
-        rgba(255, 255, 255, 0) 100%
-      );
-      z-index: 1;
-      border-top-left-radius: 50%;
-      border-bottom-left-radius: 50%;
-
-      @include tablet {
-        width: 160px;
-      }
-      @include mobile {
-        width: 172px;
-        right: -80px;
-      }
+      z-index: -1;
+      border-radius: inherit;
+    }
+    &::after {
+      backdrop-filter: blur(104.8px);
+      inset: 0px;
+      background: var(--bg);
+    }
+    &::before {
+      background-image: linear-gradient(180deg, #8b8b8b, #1d1d1d);
+      opacity: 0.7;
     }
 
     &-content {
@@ -173,8 +153,35 @@
       margin-left: 100px;
       max-width: 514px;
       padding-right: 12px;
-      position: relative;
       z-index: 2;
+      border-radius: inherit;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 228px;
+        height: 100%;
+        backdrop-filter: blur(5px);
+        background: radial-gradient(
+          79.76% 109.18% at 50% -16%,
+          rgba(255, 255, 255, 0.36),
+          rgba(255, 255, 255, 0) 100%
+        );
+        z-index: -1;
+        border-radius: inherit;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+
+        @include tablet {
+          width: 160px;
+        }
+        @include mobile {
+          width: 172px;
+          right: -80px;
+        }
+      }
+
       @include tablet {
         padding: 25px 0;
         padding-right: 0px;
