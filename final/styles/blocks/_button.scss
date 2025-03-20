@@ -1,0 +1,33 @@
+.button {
+  &--hash {
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--gray-0);
+
+    // #292E4B60
+    // #292E4B2D
+    // #303A7880
+
+    // background: linear-gradient(#292e4b60, #292e4b2d, #303a7880);
+
+    background: radial-gradient(
+        144.5% 66.64% at 102% 50%,
+        rgba(223, 29, 255, 0.5),
+        rgba(72, 205, 255, 0) 100%
+      ),
+      radial-gradient(
+        306.79% 166.09% at -5% -17%,
+        rgba(61, 165, 245, 0.5),
+        rgba(62, 69, 238, 0) 100%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(41, 46, 75, 0.38) 0%,
+        rgba(41, 46, 75, 0.18) 100%,
+        rgba(48, 58, 120, 0.5) 100%
+      );
+  }
+}
